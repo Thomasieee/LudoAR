@@ -126,6 +126,13 @@
       }
     }, false);
   </script>
+  <button onclick="sendTestMessage()">Send Test Message to Unity</button>
+  <script>
+    // Assuming 'unityInstance' is the instance of your Unity game
+    function sendTestMessage() {
+      unityInstance.SendMessage('Stone', 'TestMessage', 'Hello Unity!');
+    }
+  </script>
 
 </body>
 
