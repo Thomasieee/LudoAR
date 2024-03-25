@@ -46,5 +46,6 @@ function gotResult(error, results) {
     return;
   }
   label = results[0].label;
+  window.postMessage({ type: "FROM_P5", data: label }, "*");
   classifyVideo();
 }

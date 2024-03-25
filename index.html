@@ -109,7 +109,24 @@
     };
 
     document.body.appendChild(script);
+
   </script>
+  <script>
+    // Add this script tag before the closing </body> tag
+
+    function unityReceiveMessageFromP5(message) {
+      // Forward the message to the 'Stone' GameObject and call 'OnReceiveMessageFromP5' method
+      unityInstance.SendMessage('Stone', 'OnReceiveMessageFromP5', message);
+    }
+
+    // Listen for messages from p5.js
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "FROM_P5") {
+        unityReceiveMessageFromP5(event.data.data);
+      }
+    }, false);
+  </script>
+
 </body>
 
 </html>
