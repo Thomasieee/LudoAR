@@ -30,7 +30,7 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
       <div id="unity-webgl-logo"></div>
-      <div id="unity-fullscreen-button"></div>
+      <!-- <div id="unity-fullscreen-button"></div> -->
       <div id="unity-build-title">trial</div>
     </div>
   </div>
@@ -126,18 +126,6 @@
       }
     }, false);
   </script>
-  <button id="testMessageButton">Send Test Message to Unity</button>
-  <script>
-    document.getElementById('testMessageButton').addEventListener('click', function () {
-      if (unityInstance && unityInstance.SendMessage) {
-        unityInstance.SendMessage('Stone', 'TestMessage', 'Hello Unity!');
-        console.log('Message sent to Unity');
-      } else {
-        console.log('Unity instance not found or SendMessage not available');
-      }
-    });
-  </script>
-
 </body>
 
 </html>
