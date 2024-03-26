@@ -6,9 +6,11 @@ let video;
 let label = "waiting..";
 let classifier;
 let imageModelURL = "https://teachablemachine.withgoogle.com/models/DGjrtRRDY/";
+let client;
 // STEP 1: Load the model!
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL + "model.json");
+  client = mqtt.connect("mqtt://test.mosquitto.org");
 }
 
 function setup() {
@@ -47,5 +49,6 @@ function gotResult(error, results) {
   }
   label = results[0].label;
   window.postMessage({ type: "FROM_P5", data: label }, "*");
+  client.publish("8dilqv6009/updates", `${label}`);
   classifyVideo();
 }
