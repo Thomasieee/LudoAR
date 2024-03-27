@@ -44,6 +44,9 @@
 
   <script src="sketch.js"></script>
   <script>
+    var unityInstance = null; // Global declaration
+  </script>
+  <script>
     var container = document.querySelector("#unity-container");
     var canvas = document.querySelector("#unity-canvas");
     var loadingBar = document.querySelector("#unity-loading-bar");
@@ -117,10 +120,15 @@
   <script>
     // Add this script tag before the closing </body> tag
 
+
     function unityReceiveMessageFromP5(message) {
-      // Forward the message to the 'Stone' GameObject and call 'OnReceiveMessageFromP5' method
-      unityInstance.SendMessage('Stone', 'OnReceiveMessageFromP5', message);
+      if (unityInstance) {
+        unityInstance.SendMessage('Stone', 'OnReceiveMessageFromP5', message);
+      } else {
+        console.error("Unity instance is not yet initialized.");
+      }
     }
+
 
     // Listen for messages from p5.js
     window.addEventListener("message", (event) => {
@@ -129,6 +137,7 @@
       }
     }, false);
   </script>
+
   </script>
 
 
